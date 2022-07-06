@@ -9,7 +9,6 @@ public class SpotifyYoutubeConverterApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpotifyYoutubeConverterApplication.class, args);
 
-		ApiExample apiExample;
 	}
 
 }
