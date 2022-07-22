@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.YoutubeService;
+package com.example.spotifyYoutubeConverter.Service.YoutubeService;
 
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -8,10 +8,7 @@ import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemSnippet;
 import com.google.api.services.youtube.model.*;
 import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.google.api.services.youtube.model.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,9 +57,6 @@ public class InsertItemInPlaylistService {
 
     }
 
-    public void createPlaylist(){
-
-    }
     public void insertItemInPlaylist(String playlistId, String videoId) throws IOException {
 
         List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");

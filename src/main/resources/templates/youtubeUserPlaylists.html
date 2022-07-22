@@ -24,21 +24,21 @@
 <div class="container">
     <div class="row">
     </div>
-
-    <a th:href="@{/getYoutubePlaylists}">Go to your youtube Playlists!</a>
-
     <div class="col">
         <div class="card-deck" >
             <div class="card my-2" th:block th:each="playlist : ${topPlaylists}">
                 <div class="card-body ">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex">
-                            <img th:src="${playlist.images[0].url}" width="40" height="40" alt="Card">
-                            <h3 class="card-title" th:text="${playlist.name}" > Title</h3>
+<!--                            <img th:src="${playlist.images[0].url}" width="40" height="40" alt="Card">-->
+                            <h3 class="card-title" th:text="${playlist.snippet.title}" > Title</h3>
                         </div>
-                        <p class="card-text" th:text="'Total tracks: '+${playlist.tracks.total}"> Total</p>
-                        <a th:href="@{'/getTracksForPlaylist/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-dark my-3 float-end" role="button">View Playlist</a>
+                        <p class="card-text" th:text="'Total tracks: '+${playlist.contentDetails.itemCount}"> Total</p>
+                        <a th:href="@{'/convertYoutubeToSpotify/{playlistId}'(playlistId=${playlist.getId()})}">Convert to Spotify!</a>
+<!--                        <a th:href="@{'/getTracksForPlaylist/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-dark my-3 float-end" role="button">View Playlist</a>-->
                     </div>
+
+
                 </div>
             </div>
         </div>

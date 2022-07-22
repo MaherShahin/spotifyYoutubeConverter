@@ -1,20 +1,15 @@
-package com.example.spotifyYoutubeConverter.YoutubeService;
+package com.example.spotifyYoutubeConverter.Service.YoutubeService;
 
-import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.*;
-import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -107,23 +102,6 @@ public class SearchService {
         return null;
     }
 
-//    /*
-//     * Prompt the user to enter a query term and return the user-specified term.
-//     */
-//    private static String getInputQuery() throws IOException {
-//
-//        String inputQuery = "";
-//
-//        System.out.print("Please enter a search term: ");
-//        BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
-//        inputQuery = bReader.readLine();
-//
-//        if (inputQuery.length() < 1) {
-//            // Use the string "YouTube Developers Live" as a default.
-//            inputQuery = "YouTube Developers Live";
-//        }
-//        return inputQuery;
-//    }
 
     /*
      * Prints out all results in the Iterator. For each result, print the

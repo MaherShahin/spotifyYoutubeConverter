@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Service;
+package com.example.spotifyYoutubeConverter.Service.SpotifyService;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,7 @@ public class UserPlaylistService {
         return new PlaylistSimplified[0];
 
     }
+
 
 
 }

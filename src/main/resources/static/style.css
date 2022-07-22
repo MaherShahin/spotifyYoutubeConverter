@@ -1,0 +1,10 @@
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.card {
+    background-color: transparent;
+    border: 1px solid rgb(255 255 255 / 53%);
+}

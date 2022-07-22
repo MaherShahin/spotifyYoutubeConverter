@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Service;
+package com.example.spotifyYoutubeConverter.Service.SpotifyService;
 
 import lombok.Getter;
 import org.apache.hc.core5.http.ParseException;

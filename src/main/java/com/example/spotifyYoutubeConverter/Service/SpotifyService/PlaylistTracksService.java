@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Service;
+package com.example.spotifyYoutubeConverter.Service.SpotifyService;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,8 @@ public class PlaylistTracksService {
                         (playlistId).build();
 
         try {
+
             final PlaylistTrack[] playlistTracks= getPlaylistsItemsRequest.execute().getItems();
-
-
 
             return playlistTracks;
         }
