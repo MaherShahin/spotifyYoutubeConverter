@@ -58,7 +58,7 @@ public class YoutubeUserPlaylistService {
         return playlist;
     }
 
-    public List<PlaylistItem> getItemsInPlaylist(String playlistID) throws IOException {
+    public PlaylistItemListResponse getItemsInPlaylist(String playlistID) throws IOException {
         List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");
 
         Credential credential = YoutubeAuthenticationService.authorize(scopes, "playlistupdates");
@@ -71,7 +71,26 @@ public class YoutubeUserPlaylistService {
         PlaylistItemListResponse response = request.setMaxResults(150L)
                 .setPlaylistId(playlistID)
                 .execute();
-        return response.getItems();
+//        return response.getItems();
+        return response;
+    }
+
+    public PlaylistItemListResponse getItemsInPlaylistOffset(String playlistID, String nextPageToken) throws IOException {
+        List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");
+
+        Credential credential = YoutubeAuthenticationService.authorize(scopes, "playlistupdates");
+
+        youtube = new YouTube.Builder(YoutubeAuthenticationService.HTTP_TRANSPORT, YoutubeAuthenticationService.JSON_FACTORY, credential)
+                .setApplicationName("youtube-cmdline-playlistupdates-sample")
+                .build();
+
+        YouTube.PlaylistItems.List request = youtube.playlistItems().list("snippet,contentDetails").setPageToken(nextPageToken);
+        PlaylistItemListResponse response = request.setMaxResults(150L)
+                .setPlaylistId(playlistID).setPageToken(nextPageToken)
+                .execute();
+
+        return response;
+
     }
 
     public String getYoutubeTrackName(PlaylistItem item){

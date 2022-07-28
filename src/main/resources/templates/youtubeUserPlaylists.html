@@ -19,36 +19,37 @@
 </head>
 <body>
 
-<h1> Here is a list of your Current Playlists! </h1>
+<h1 class="text-center my-4"> Here is a list of your current Youtube playlists! </h1>
+<span class="text-center my-3" th:if="${spotifyStatus == null}"> You are not logged in with Spotify</span>
+<a class="btn btn-primary btn-lg btn-block my-4 text-center" href="/spotifyUserPlaylists" th:if="${spotifyStatus != null}">Go to Spotify Playlists</a>
 
-<div class="container">
-    <div class="row">
-    </div>
+
+<div class="container d-flex ">
+    <div class="row"></div>
     <div class="col">
-        <div class="card-deck" >
-            <div class="card my-2" th:block th:each="playlist : ${topPlaylists}">
-                <div class="card-body ">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex">
-<!--                            <img th:src="${playlist.images[0].url}" width="40" height="40" alt="Card">-->
-                            <h3 class="card-title" th:text="${playlist.snippet.title}" > Title</h3>
-                        </div>
-                        <p class="card-text" th:text="'Total tracks: '+${playlist.contentDetails.itemCount}"> Total</p>
-                        <a th:href="@{'/convertYoutubeToSpotify/{playlistId}'(playlistId=${playlist.getId()})}">Convert to Spotify!</a>
-<!--                        <a th:href="@{'/getTracksForPlaylist/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-dark my-3 float-end" role="button">View Playlist</a>-->
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
+        <table >
+            <tr>
+                <th>Title</th>
+                <th>Total Songs</th>
+                <th>Convert to Spotify</th>
+            </tr>
+            <tr th:each="playlist : ${topPlaylists}" style="cursor: pointer">
+                <td th:text="${playlist.snippet.title}"> Title 1</td>
+                <td th:text="${playlist.contentDetails.itemCount}"> Item Count  1</td>
+                <td>
+                    <a th:if="${spotifyStatus == null}"  th:href="@{${spotifyAuthUrl}}" class="btn btn-danger d-flex text-center" >Login with Spotify First!</a>
+                    <a th:if="${spotifyStatus != null}"  th:href="@{'/convertYoutubeToSpotify/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-primary d-flex text-center" >Convert</a>
+<!--                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="20" height="20">-->
+                    </a>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 
-<!--<div th:block th:each=" playlist : ${topPlaylists}">-->
-<!--    <a  th:text="${playlist.getName()}"></a>-->
-<!--    <p  th:text="'Tracks: '+${playlist.tracks.total}"></p>-->
-<!--</div>-->
+
+
+
 
 </body>
 </html>

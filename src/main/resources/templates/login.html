@@ -16,20 +16,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+    <script src="/index.js" defer></script>
 </head>
 
 <body>
 
 <div class="container vh-100 d-flex align-items-center justify-content-center">
 
-        <div class="col-md-3">
-            <h1>Get Started</h1>
-            <a th:href="@{${authorizationUrl}}" class="btn btn-primary">
-                <span class="glyphicon glyphicon-log-in"></span>
-                Login with Spotify
-            </a>
+        <div class="col-md-5 ">
+            <h1 class="text-center">Get Started!</h1>
+            <h3 class="text-center my-5">Do you want to convert your Spotify Playlists or Youtube Playlists?</h3>
+            <div class="d-flex justify-content-around mt-4">
+                <a th:href="@{${authorizationUrl}}" class="btn btn-primary spotify-btn">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    Login with Spotify
+                </a>
+                <button class="btn btn-primary youtube-btn" id="youtubeBtn">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    Login with Youtube
+                </button>
+            </div>
         </div>
 </div>
 
 </body>
+<script>
+    
+</script>
 </html>

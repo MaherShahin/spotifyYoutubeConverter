@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 @Service
-public class SearchService {
+public class YoutubeSearchService {
 
     /**
      * Define a global variable that identifies the name of a file that
@@ -41,7 +41,7 @@ public class SearchService {
         // Read the developer key from the properties file.
         Properties properties = new Properties();
         try {
-            InputStream in = SearchService.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
+            InputStream in = YoutubeSearchService.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
             properties.load(in);
 
         } catch (IOException e) {

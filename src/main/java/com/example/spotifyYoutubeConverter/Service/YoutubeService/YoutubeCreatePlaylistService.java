@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class CreatePlaylistService {
+public class YoutubeCreatePlaylistService {
 
     private static YouTube youtube;
 

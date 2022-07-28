@@ -25,13 +25,11 @@
         <tr>
             <th>Youtube Name</th>
             <th>Spotify Name</th>
-
         </tr>
         <tr th:each="track : ${tracks}" style="cursor: pointer">
                 <td th:text="${track.youtubeName}"></td>
                 <td th:text="${track.spotifyName}"></td>
         </tr>
-
     </table>
 </div>
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Service
-public class InsertItemInPlaylistService {
+public class YoutubeInsertItemInPlaylistService {
 
     private static YouTube youtube;
 
@@ -86,5 +86,6 @@ public class InsertItemInPlaylistService {
         }
 
     }
+
 }
 

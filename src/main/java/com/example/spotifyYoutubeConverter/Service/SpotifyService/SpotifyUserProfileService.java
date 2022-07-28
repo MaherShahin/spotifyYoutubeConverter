@@ -11,7 +11,7 @@ import se.michaelthelin.spotify.requests.data.users_profile.GetCurrentUsersProfi
 import java.io.IOException;
 
 @Service
-public class UserProfileService {
+public class SpotifyUserProfileService {
 
     @Autowired
     SpotifyUrlService spotifyUrlService;

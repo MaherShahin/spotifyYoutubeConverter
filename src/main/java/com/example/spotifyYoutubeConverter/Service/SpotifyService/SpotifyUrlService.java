@@ -22,7 +22,7 @@ import java.net.URI;
 @Getter
 public class SpotifyUrlService {
 
-    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8081/myapi/get-user-code");
+    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8080/myapi/get-user-code");
     private String userAccessCode = "";
 
     @Value("${CLIENT_ID}")
@@ -73,9 +73,8 @@ public class SpotifyUrlService {
             throw new RuntimeException(e);
         }
 
-        response.sendRedirect("/userPlaylists");
+        response.sendRedirect("/spotifyUserPlaylists");
         return spotifyApi.getAccessToken();
-
 
     }
 

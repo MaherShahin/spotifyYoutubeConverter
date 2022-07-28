@@ -11,7 +11,7 @@ import se.michaelthelin.spotify.requests.data.playlists.GetListOfCurrentUsersPla
 import java.io.IOException;
 
 @Service
-public class UserPlaylistService {
+public class SpotifyUserPlaylistService {
     @Autowired
     SpotifyUrlService spotifyUrlService;
 
