@@ -19,8 +19,6 @@ public class SpotifySearchTrackService {
 
 
     public Track[] searchForTrack(String title){
-
-
         final SearchItemRequest searchItemRequest = spotifyUrlService.getSpotifyApi().searchItem(title,"track").build();
 
         try {

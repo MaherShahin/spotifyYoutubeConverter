@@ -2,8 +2,10 @@ package com.example.spotifyYoutubeConverter.Service.SpotifyService;
 
 import lombok.Getter;
 import org.apache.hc.core5.http.ParseException;
+import org.mortbay.jetty.Response;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.michaelthelin.spotify.SpotifyApi;
@@ -73,10 +75,14 @@ public class SpotifyUrlService {
             throw new RuntimeException(e);
         }
 
-        response.sendRedirect("/spotifyUserPlaylists");
+
+
         return spotifyApi.getAccessToken();
 
     }
+
+
+
 
 
 }

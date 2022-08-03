@@ -71,7 +71,6 @@ public class YoutubeUserPlaylistService {
         PlaylistItemListResponse response = request.setMaxResults(150L)
                 .setPlaylistId(playlistID)
                 .execute();
-//        return response.getItems();
         return response;
     }
 

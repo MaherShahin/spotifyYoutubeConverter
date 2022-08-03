@@ -1,11 +1,10 @@
-package com.example.spotifyYoutubeConverter.Service.YoutubeSpotifyConverter;
+package com.example.spotifyYoutubeConverter.Service.YoutubeService;
 
 import com.example.spotifyYoutubeConverter.Model.MyTrack;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyCreatePlaylistService;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyInsertTracksPlaylistService;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifySearchTrackService;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyUrlService;
-import com.example.spotifyYoutubeConverter.Service.YoutubeService.YoutubeUserPlaylistService;
 import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;

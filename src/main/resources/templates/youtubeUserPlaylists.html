@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>User's Playlists</title>
+    <title>Your YouTube Playlists</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
+    <src></src>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
@@ -20,26 +21,27 @@
 <body>
 
 <h1 class="text-center my-4"> Here is a list of your current Youtube playlists! </h1>
+
 <span class="text-center my-3" th:if="${spotifyStatus == null}"> You are not logged in with Spotify</span>
-<a class="btn btn-primary btn-lg btn-block my-4 text-center" href="/spotifyUserPlaylists" th:if="${spotifyStatus != null}">Go to Spotify Playlists</a>
 
+<a class="my-4 justify-content-center d-flex" href="/spotifyUserPlaylists" th:if="${spotifyStatus != null}">
+    Go to your Spotify Playlists
+</a>
 
-<div class="container d-flex ">
+<div class="container text-center justify-content-center align-content-center d-flex flex-column">
     <div class="row"></div>
     <div class="col">
         <table >
             <tr>
                 <th>Title</th>
                 <th>Total Songs</th>
-                <th>Convert to Spotify</th>
             </tr>
             <tr th:each="playlist : ${topPlaylists}" style="cursor: pointer">
                 <td th:text="${playlist.snippet.title}"> Title 1</td>
                 <td th:text="${playlist.contentDetails.itemCount}"> Item Count  1</td>
                 <td>
                     <a th:if="${spotifyStatus == null}"  th:href="@{${spotifyAuthUrl}}" class="btn btn-danger d-flex text-center" >Login with Spotify First!</a>
-                    <a th:if="${spotifyStatus != null}"  th:href="@{'/convertYoutubeToSpotify/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-primary d-flex text-center" >Convert</a>
-<!--                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="20" height="20">-->
+                    <a th:if="${spotifyStatus != null}"  th:href="@{'/convertYoutubeToSpotify/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-primary d-block text-center convertSpotifyBtn"  >Convert To Spotify</a>
                     </a>
                 </td>
             </tr>
@@ -47,9 +49,23 @@
     </div>
 </div>
 
-
-
-
+<script>
+    let loading = false;
+    let convertSpotifyBtns = document.getElementsByClassName('convertSpotifyBtn');
+    for (let i = 0; i < convertSpotifyBtns.length; i++) {
+        convertSpotifyBtns[i].addEventListener('click', function (e) {
+            if (loading) {
+                return;
+            }
+            loading = true;
+            e.target.innerHTML = 
+            '<div class="spinner-border text-secondary" role="status">' +
+            '<span class="sr-only"></span>' +
+            '</div>';
+            e.target.classList.add('disabled');
+        });
+    };
+</script>
 
 </body>
 </html>

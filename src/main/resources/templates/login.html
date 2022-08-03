@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>User's Playlists</title>
+    <title>Spotify Login</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -22,25 +22,20 @@
 <body>
 
 <div class="container vh-100 d-flex align-items-center justify-content-center">
-
         <div class="col-md-5 ">
-            <h1 class="text-center">Get Started!</h1>
-            <h3 class="text-center my-5">Do you want to convert your Spotify Playlists or Youtube Playlists?</h3>
+            <h1 class="text-center">Hi! </h1>
+            <h3 class="text-center my-5">Please Login with your Spotify Account first to get started!</h3>
             <div class="d-flex justify-content-around mt-4">
                 <a th:href="@{${authorizationUrl}}" class="btn btn-primary spotify-btn">
                     <span class="glyphicon glyphicon-log-in"></span>
                     Login with Spotify
                 </a>
-                <button class="btn btn-primary youtube-btn" id="youtubeBtn">
-                    <span class="glyphicon glyphicon-log-in"></span>
-                    Login with Youtube
-                </button>
+            </div>
+            <div th:if="${errorMessage != null}" class="alert alert-danger my-5" role="alert" th:text="${errorMessage}">
+                Error!
             </div>
         </div>
 </div>
 
 </body>
-<script>
-    
-</script>
 </html>

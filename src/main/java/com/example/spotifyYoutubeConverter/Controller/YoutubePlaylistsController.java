@@ -21,7 +21,7 @@ public class YoutubePlaylistsController {
     @Autowired
     SpotifyUrlService spotifyUrlService;
 
-    @RequestMapping(value = {"/getYoutubePlaylists","/Callback"})
+    @RequestMapping(value = {"/getYoutubePlaylists","/Callback","/youtubeUserPlaylists"})
     public String getYoutubePlaylist(Model model) throws IOException {
         model.addAttribute("topPlaylists", youtubeUserPlaylistService.getPlaylists());
         model.addAttribute("spotifyStatus", spotifyUserProfileService.getCurrentUserProfile());

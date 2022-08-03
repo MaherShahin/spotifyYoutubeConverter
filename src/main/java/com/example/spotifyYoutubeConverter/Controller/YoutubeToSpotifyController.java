@@ -1,6 +1,6 @@
 package com.example.spotifyYoutubeConverter.Controller;
 
-import com.example.spotifyYoutubeConverter.Service.YoutubeSpotifyConverter.YoutubeSpotifyConverterService;
+import com.example.spotifyYoutubeConverter.Service.YoutubeService.YoutubeSpotifyConverterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

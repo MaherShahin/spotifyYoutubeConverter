@@ -19,30 +19,53 @@
 </head>
 <body>
 
-<h1 class="text-center my-5"> Spotify Playlists </h1>
+<h1 class="text-center my-5"> YoutubeToSpotifyConverter </h1>
 
 <div class="container text-center justify-content-center align-content-center d-flex flex-column">
-    <div class="row"></div>
-    <a class="my-3 " th:href="@{/getYoutubePlaylists}">Go to your Youtube Playlists instead</a>
+
+    <a class="my-4 justify-content-center d-flex" href="/spotifyUserPlaylists" th:if="${spotifyStatus != null}">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="100" height="100">
+    </a>
+    <a class="my-3 " th:href="@{/getYoutubePlaylists}">Go to your YouTube Playlists instead</a>
     <table class="justify-content-center">
         <tr>
             <th>Title</th>
             <th>Total Songs</th>
-            <th>View Playlist</th>
         </tr>
         <tr th:each="playlist : ${topPlaylists}" style="cursor: pointer">
                 <td th:text="${playlist.name}"> Song 1</td>
                 <td th:text="${playlist.tracks.total}"> Artist 1</td>
                 <td>
-                    <a th:href="@{'/getTracksForPlaylist/{playlistId}'(playlistId=${playlist.getId()})}" >
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="20" height="20">
+                    <a th:href="@{'/getTracksForPlaylist/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-primary d-block text-center" >
+                        View Plalyist
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/convertSpotifyToYoutube/{playlistId}'(playlistId=${playlist.getId()})}" class="btn btn-primary d-block text-center convertYoutubeBtn" >
+                        Convert To Youtube
                     </a>
                 </td>
             </tr>
     </table>
 </div>
 
-
+<script>
+    let loading = false;
+    let convertYoutubeBtns = document.getElementsByClassName('convertYoutubeBtn');
+    for (let i = 0; i < convertYoutubeBtns.length; i++) {
+        convertYoutubeBtns[i].addEventListener('click', function (e) {
+            if (loading) {
+                return;
+            }
+            loading = true;
+            e.target.innerHTML =
+            '<div class="spinner-border text-secondary" role="status">' +
+            '<span class="sr-only"></span>' +
+            '</div>';
+            e.target.classList.add('disabled');
+        });
+    };
+</script>
 
 </body>
 </html>

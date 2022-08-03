@@ -84,11 +84,11 @@ public class YoutubeSearchService {
             // Call the API and print results.
             SearchListResponse searchResponse = search.execute();
             List<SearchResult> searchResultList = searchResponse.getItems();
-            if (searchResultList != null) {
-                prettyPrint(searchResultList.iterator(), queryTerm);
-            }
-            System.out.println(searchResultList.get(0).getId().getVideoId());
-            System.out.println(searchResultList.get(1).getId().getVideoId());
+//            if (searchResultList != null) {
+//                prettyPrint(searchResultList.iterator(), queryTerm);
+//            }
+//            System.out.println(searchResultList.get(0).getId().getVideoId());
+//            System.out.println(searchResultList.get(1).getId().getVideoId());
             return searchResultList;
 
         } catch (GoogleJsonResponseException e) {

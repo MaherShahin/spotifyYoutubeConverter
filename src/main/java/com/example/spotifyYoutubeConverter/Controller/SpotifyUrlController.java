@@ -2,18 +2,13 @@ package com.example.spotifyYoutubeConverter.Controller;
 
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifySearchTrackService;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyUrlService;
-import com.example.spotifyYoutubeConverter.Service.YoutubeService.YoutubeAuthenticationService;
 import com.example.spotifyYoutubeConverter.Service.YoutubeService.YoutubeUserPlaylistService;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import se.michaelthelin.spotify.model_objects.special.SearchResult;
-import se.michaelthelin.spotify.model_objects.specification.Paging;
+import org.springframework.web.servlet.ModelAndView;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
 import javax.servlet.http.HttpServletResponse;
@@ -32,20 +27,32 @@ public class SpotifyUrlController {
     @Autowired
     SpotifySearchTrackService spotifySearchTrackService;
 
-    @Autowired
-    YoutubeUserPlaylistService youtubeUserPlaylistService;
-
     @RequestMapping(value = {"","/","login"}, method = RequestMethod.GET)
-    public String getLoginPage(Model model){
+    public String getLoginPage(@RequestParam(required = false, name="message") String errorMessage, Model model){
+        if (errorMessage != null){
+            model.addAttribute("errorMessage",errorMessage);
+        }
         model.addAttribute("authorizationUrl" , spotifyUrlService.getAuthorizationUrl());
-        model.addAttribute("youtubeAuthorizationUrl",youtubeAuthorizationUrl);
         return "/login";
     }
 
+    @GetMapping("/loginYoutube")
+    public String getYoutubeLogin(){
+        return "/loginYoutube";
+    }
+
     @GetMapping("/myapi/get-user-code")
-    public String getSpotifyUserCode(@RequestParam("code") String userCode, HttpServletResponse response) throws IOException {
-        spotifyUrlService.getSpotifyUserCode(userCode,response);
-        return "spotifyUserPlaylists";
+    public ModelAndView getSpotifyUserCode(@RequestParam( required = false, name = "code") String userCode,
+                                           @RequestParam(required = false, name = "error") String error ,
+                                           HttpServletResponse response, ModelMap model) throws IOException {
+
+        if (userCode == null){
+            model.addAttribute("message", "Something wrong has happened, please try to login with your Spotify account again. Error: " + error);
+            return new ModelAndView("redirect:/login",model);
+        } else {
+            spotifyUrlService.getSpotifyUserCode(userCode, response);
+        }
+        return new ModelAndView("redirect:/loginYoutube");
     }
 
     @GetMapping("/searchSpotify/{trackTitle}")
