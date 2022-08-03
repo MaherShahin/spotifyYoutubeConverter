@@ -12,7 +12,7 @@ Convert Spotify Playlist to Youtube Playlist - Single Conversion
 View and Manage Spotify Playlists and Tracks within them
 
 #### Services and Controllers for:
-##Spotify:
+## Spotify:
 - Authentication/URL 
 - Create playlist
 - Get playlist
@@ -22,7 +22,7 @@ View and Manage Spotify Playlists and Tracks within them
 - Insert tracks into user playlist
 - Convert a single playlist into a youtube playlist
 
-##Youtube:
+## Youtube:
 - Youtube Authentication
 - Create playlist
 - Get playlist
@@ -31,8 +31,7 @@ View and Manage Spotify Playlists and Tracks within them
 - Insert items in user playlist
 - Convert a single playlist into a spotify playlist
 
-###Directory Structure
-
+### Directory Structure
 
     ├── com.example.spotifyYoutubeConverter                    
     │   ├── Controller          
@@ -49,7 +48,7 @@ View and Manage Spotify Playlists and Tracks within them
 - Add the possibility for user to convert multiple playlists at once
 - Decouple the API authorizations from the current localhost and deploy the project
 
-##How to install:
+## How to install:
 
 To build it, you will need to download and unpack the latest (or recent) version of Maven (https://maven.apache.org/download.cgi) and put the mvn command on your path. Then, you will need to install a Java 1.8 (or higher) JDK (not JRE!), and make sure you can run java from the command line. Now you can run 'mvn clean install' and Maven will compile your project.
 
