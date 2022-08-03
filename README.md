@@ -5,14 +5,14 @@ Spring Web App utilizing Spotify API & Google Youtube Data API
 A webapp where users can login with their spotify and youtube accounts and manage/convert playlists between the different platforms
 
 ## Done so far:
-Spotify API Authentication
-Youtube API Authentication
-Convert Youtube playlist to Spotify Playlist - Single Conversion
-Convert Spotify Playlist to Youtube Playlist - Single Conversion
-View and Manage Spotify Playlists and Tracks within them
+- Spotify API Authentication
+- Youtube API Authentication
+- Convert Youtube playlist to Spotify Playlist - Single Conversion
+- Convert Spotify Playlist to Youtube Playlist - Single Conversion
+- View and Manage Spotify Playlists and Tracks within them
 
-#### Services and Controllers for:
-## Spotify:
+## Services and Controllers for:
+### Spotify:
 - Authentication/URL 
 - Create playlist
 - Get playlist
@@ -22,7 +22,7 @@ View and Manage Spotify Playlists and Tracks within them
 - Insert tracks into user playlist
 - Convert a single playlist into a youtube playlist
 
-## Youtube:
+### Youtube:
 - Youtube Authentication
 - Create playlist
 - Get playlist
