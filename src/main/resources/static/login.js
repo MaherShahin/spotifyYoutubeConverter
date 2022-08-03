@@ -1,4 +1,3 @@
-
 function LandingPage() {
     const getSpotifyUserLogin = () => {
         fetch("http://localhost:8080/myapi/login")
@@ -6,6 +5,5 @@ function LandingPage() {
         .then(response => {
             window.location.replace(response);
         })
-
     }
 }

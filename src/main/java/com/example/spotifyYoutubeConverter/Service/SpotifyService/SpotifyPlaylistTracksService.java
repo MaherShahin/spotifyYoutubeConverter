@@ -15,7 +15,6 @@ public class SpotifyPlaylistTracksService {
 
     @Autowired
     SpotifyUrlService spotifyUrlService;
-
     @GetMapping("tracks-in-playlists")
     public PlaylistTrack[] getPlaylistTracks(String playlistId){
 

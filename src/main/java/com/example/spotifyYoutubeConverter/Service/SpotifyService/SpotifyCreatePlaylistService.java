@@ -25,10 +25,14 @@ public class SpotifyCreatePlaylistService {
         final CreatePlaylistRequest createPlaylistRequest = spotifyUrlService.getSpotifyApi().createPlaylist(userID,title).build();
 
         try {
+
             final se.michaelthelin.spotify.model_objects.specification.Playlist createdPlaylist = createPlaylistRequest.execute();
             return createdPlaylist;
+
         } catch (IOException | ParseException | SpotifyWebApiException e) {
+
             throw new RuntimeException(e);
+
         }
 
     }

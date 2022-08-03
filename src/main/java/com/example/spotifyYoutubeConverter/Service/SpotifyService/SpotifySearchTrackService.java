@@ -17,7 +17,6 @@ public class SpotifySearchTrackService {
     @Autowired
     SpotifyUrlService spotifyUrlService;
 
-
     public Track[] searchForTrack(String title){
         final SearchItemRequest searchItemRequest = spotifyUrlService.getSpotifyApi().searchItem(title,"track").build();
 
@@ -29,8 +28,11 @@ public class SpotifySearchTrackService {
             return tracks;
 
         } catch (IOException | ParseException | SpotifyWebApiException e) {
+
             throw new RuntimeException(e);
+
         }
 
     }
+
 }

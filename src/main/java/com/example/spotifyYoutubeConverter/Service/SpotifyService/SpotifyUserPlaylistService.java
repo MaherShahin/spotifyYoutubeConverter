@@ -25,12 +25,13 @@ public class SpotifyUserPlaylistService {
 
         try{
 
-            final PlaylistSimplified[] userPlaylists = getListOfUsersPlaylistsRequest.execute().getItems();
-            return userPlaylists;
+            return getListOfUsersPlaylistsRequest.execute().getItems();
 
         }
         catch (IOException | ParseException | SpotifyWebApiException e) {
+
             System.out.println("Something went wrong! " + e.getMessage());
+
         }
         return new PlaylistSimplified[0];
 

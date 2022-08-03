@@ -30,8 +30,6 @@ public class SpotifyYoutubeConverterService {
     @Autowired
     YoutubeInsertItemInPlaylistService youtubeInsertItemInPlaylistService;
 
-
-
     public void convertToYoutube(String playlistId) throws IOException {
 
     //     Input -> Spotify Playlist (Take name and tracks from it)
@@ -41,12 +39,12 @@ public class SpotifyYoutubeConverterService {
         String youtubePlaylistId = youtubeCreatePlaylistService.createPlaylist(
                 spotifyGetPlaylistService.getPlaylist(playlistId).getName(),"Created by My App");
 
-//        String youtubePlaylistId = "PLAbLaqtJcMjNerJ-k6j2q6l8ztqWtYU5_";
+//        String youtubePlaylistId = "PLAbLaqtJcMjNerJ-k6j2q6l8ztqWtYU5_"; // Test Playlist
 
         for (PlaylistTrack t : spotifyPlaylistTracksService.getPlaylistTracks(playlistId)) {
             String videoId = youtubeSearchService.getVideos(t.getTrack().getName()).get(0).getId().getVideoId();
-            System.out.println(youtubeSearchService.getVideos(t.getTrack().getName()).get(0).getId().getVideoId()
-                    + " Name : " + youtubeSearchService.getVideos(t.getTrack().getName()).get(0).getSnippet().getTitle());
+//            System.out.println(youtubeSearchService.getVideos(t.getTrack().getName()).get(0).getId().getVideoId()
+//                    + " Name : " + youtubeSearchService.getVideos(t.getTrack().getName()).get(0).getSnippet().getTitle());
             youtubeInsertItemInPlaylistService.insertItemInPlaylist(youtubePlaylistId,videoId);
         }
 

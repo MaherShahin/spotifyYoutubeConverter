@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Controller;
+package com.example.spotifyYoutubeConverter.Controller.SpotifyController;
 
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyPlaylistTracksService;
 import com.example.spotifyYoutubeConverter.Service.YoutubeService.YoutubeCreatePlaylistService;

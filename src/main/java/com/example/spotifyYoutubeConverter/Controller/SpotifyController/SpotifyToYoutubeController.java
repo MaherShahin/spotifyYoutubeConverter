@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Controller;
+package com.example.spotifyYoutubeConverter.Controller.SpotifyController;
 
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyYoutubeConverterService;
 import org.springframework.beans.factory.annotation.Autowired;

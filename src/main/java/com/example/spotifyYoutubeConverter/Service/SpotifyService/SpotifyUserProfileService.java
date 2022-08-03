@@ -25,6 +25,7 @@ public class SpotifyUserProfileService {
         try{
 
             final User currentUser = getCurrentUsersProfileRequest.execute();
+
             return currentUser;
 
         }

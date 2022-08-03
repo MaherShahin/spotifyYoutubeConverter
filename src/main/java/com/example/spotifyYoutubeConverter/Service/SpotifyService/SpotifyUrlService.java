@@ -1,11 +1,14 @@
 package com.example.spotifyYoutubeConverter.Service.SpotifyService;
 
-import lombok.Getter;
 import org.apache.hc.core5.http.ParseException;
-import org.mortbay.jetty.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.EnvironmentCapable;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.michaelthelin.spotify.SpotifyApi;
@@ -15,29 +18,41 @@ import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCrede
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
-
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 
 @Service
-@Getter
-public class SpotifyUrlService {
+public class SpotifyUrlService  {
 
-    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8080/myapi/get-user-code");
+    @Value("${spotify.redirect_uri}")
+    private String redirectUriString;
+
+    @Value("${spotify.CLIENT_ID}")
+    private String ClientID;
+
+    @Value("${spotify.CLIENT_SECRET}")
+    private String ClientSecret;
+
     private String userAccessCode = "";
+    private SpotifyApi spotifyApi;
 
-    @Value("${CLIENT_ID}")
-    private static String ClientID;
+    private URI redirectUri;
 
-    @Value("${CLIENT_SECRET}")
-    private static String ClientSecret;
+    @PostConstruct
+    public void postConstruct(){
 
-    private final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-            .setClientId("e7355e6552e14faea50a3da3aa8f6f8b")
-            .setClientSecret("2340b9c6329b48a788b4350d2ed4bd2b")
-            .setRedirectUri(redirectUri)
-            .build();
+        redirectUri = SpotifyHttpManager.makeUri(redirectUriString);
+
+        spotifyApi = new SpotifyApi.Builder()
+                .setClientId(ClientID)
+                .setClientSecret(ClientSecret)
+                .setRedirectUri(redirectUri)
+                .build();
+
+
+    }
 
     public SpotifyApi getSpotifyApi() {
         return this.spotifyApi;
@@ -57,6 +72,7 @@ public class SpotifyUrlService {
         return uri.toString();
 
     }
+
     @GetMapping(value = "get-user-code")
     public String getSpotifyUserCode(@RequestParam("code") String userCode, HttpServletResponse response) throws IOException {
         userAccessCode = userCode;
@@ -80,9 +96,6 @@ public class SpotifyUrlService {
         return spotifyApi.getAccessToken();
 
     }
-
-
-
 
 
 }

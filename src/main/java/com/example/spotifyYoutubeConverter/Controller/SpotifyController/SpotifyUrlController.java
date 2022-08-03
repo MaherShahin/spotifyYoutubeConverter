@@ -1,4 +1,4 @@
-package com.example.spotifyYoutubeConverter.Controller;
+package com.example.spotifyYoutubeConverter.Controller.SpotifyController;
 
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifySearchTrackService;
 import com.example.spotifyYoutubeConverter.Service.SpotifyService.SpotifyUrlService;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @Controller
 public class SpotifyUrlController {
 
-    private String youtubeAuthorizationUrl = "https://accounts.google.com/o/oauth2/auth?client_id=54787073109-" +
+    private final String youtubeAuthorizationUrl = "https://accounts.google.com/o/oauth2/auth?client_id=54787073109-" +
             "9alg8012fcofs0fa0ssffp0j8dcmhs5s.apps.googleusercontent.com&" +
             "redirect_uri=http://localhost:8080/Callback&response_type=code&" +
             "scope=https://www.googleapis.com/auth/youtube";

@@ -23,7 +23,7 @@ public class SpotifyInsertTracksPlaylistService {
     @Autowired
     SpotifyUserProfileService spotifyUserProfileService;
 
-    public SnapshotResult insertItemsInPlaylist(String playlistId, String[] urisToBeAdded) {
+    public void insertItemsInPlaylist(String playlistId, String[] urisToBeAdded) {
 
         String userID = spotifyUserProfileService.getCurrentUserProfile().getId();
 
@@ -70,7 +70,7 @@ public class SpotifyInsertTracksPlaylistService {
             }
 
         } while(!under100);
-        return playlist;
+
 
     }
 }
